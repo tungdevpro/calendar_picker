@@ -2,6 +2,7 @@ name: calendar_picker
 description: "A Calendar Picker package"
 version: 0.0.1
 homepage:
+publish_to: https://github.com/tungdevpro/calendar_picker
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
