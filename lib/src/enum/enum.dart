@@ -1,0 +1,5 @@
+
+enum AppCalendarPickerType {
+  single,
+  range
+}
