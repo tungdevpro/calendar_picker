@@ -10,12 +10,15 @@ class AppCalendarListDayWidget extends StatefulWidget {
   final bool visibleToday;
   final List<DayModel> days;
   final ValueChanged<List<DateTime>> onChanged;
+  final CalendarPickerType pickType;
+
   const AppCalendarListDayWidget({
     super.key,
     required this.visibleToday,
     required this.days,
     required this.onChanged,
     this.initDate,
+    required this.pickType,
   });
 
   @override
@@ -143,22 +146,28 @@ class _AppCalendarListDayWidgetState extends State<AppCalendarListDayWidget> {
   void _didTapElement(DayModel e) {
     if (!e.enable) return;
     setState(() {
-      if (choices.length >= 2) {
+      if (widget.pickType == CalendarPickerType.single) {
         choices = [e];
       } else {
-        if (choices.length == 1) {
-          if (e.date.isBefore(choices.first.date)) {
-            return;
+        if (choices.length >= 2) {
+          choices = [e];
+        } else {
+          if (choices.length == 1) {
+            if (e.date.isBefore(choices.first.date)) {
+              return;
+            }
+            if (choices.last.date.isAtSameDayAs(e.date)) {
+              choices = [];
+              return;
+            }
           }
-          if (choices.last.date.isAtSameDayAs(e.date)) {
-            choices = [];
-            return;
-          }
+          choices.add(e);
         }
-        choices.add(e);
       }
     });
-    if (choices.length > 1) widget.onChanged.call(choices.map<DateTime>((e) => e.date).toList());
+    if (choices.isNotEmpty) {
+      widget.onChanged.call(choices.map<DateTime>((e) => e.date).toList());
+    }
   }
 
   Color? _getElementColor({required DateTime date, required bool isEnable}) {

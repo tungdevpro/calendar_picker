@@ -126,6 +126,7 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
           days: _days,
           onChanged: widget.onChanged,
           initDate: widget.initDate,
+          pickType: widget.pickType,
         ),
       ],
     );

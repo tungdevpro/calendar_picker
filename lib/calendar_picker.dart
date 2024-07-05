@@ -13,7 +13,8 @@ export 'src/common/model/day_model.dart';
 
 Future<T?> showBottomCalendarPicker<T>(
   BuildContext context, {
-  required GetDateCalendarBuilder onChanged,
+  GetDateCalendarBuilder? onChanged,
+  ValueChanged<DateTime>? onTapDate,
   DateTime? minDate,
   DateTime? maxDate,
   List<DateTime>? intiDate,
@@ -22,6 +23,7 @@ Future<T?> showBottomCalendarPicker<T>(
   bool isScrollControlled = true,
   CalendarStyle? calendarStyle,
   LabelConfiguration? labelConfig,
+  CalendarPickerType? pickType,
 }) async {
   return showModalBottomSheet<T?>(
     context: context,
@@ -29,6 +31,7 @@ Future<T?> showBottomCalendarPicker<T>(
     builder: (_) {
       return CalendarPickerWidget(
         onChanged: onChanged,
+        onTapDate: onTapDate,
         minDate: minDate,
         maxDate: maxDate,
         initDate: intiDate,
@@ -36,6 +39,7 @@ Future<T?> showBottomCalendarPicker<T>(
         visibleToday: visibleToday,
         calendarStyle: calendarStyle,
         labelConfig: labelConfig,
+        pickerType: pickType,
       );
     },
   );

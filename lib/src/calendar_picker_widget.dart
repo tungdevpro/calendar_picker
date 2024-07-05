@@ -11,12 +11,13 @@ class CalendarPickerWidget extends StatefulWidget {
   final List<DateTime>? initDate;
   final DateTime? minDate;
   final DateTime? maxDate;
-  final GetDateCalendarBuilder onChanged;
+  final GetDateCalendarBuilder? onChanged;
   final bool visibleToday;
   final CalendarStyle? calendarStyle;
   final List<String>? weekdays;
   final LabelConfiguration? labelConfig;
   final CalendarPickerType? pickerType;
+  final ValueChanged<DateTime>? onTapDate;
 
   const CalendarPickerWidget({
     super.key,
@@ -28,6 +29,7 @@ class CalendarPickerWidget extends StatefulWidget {
     this.weekdays,
     this.labelConfig,
     this.pickerType,
+    this.onTapDate,
     required this.onChanged,
   });
 
@@ -41,8 +43,7 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
   DateTime? _minDate;
   DateTime? _maxDate;
 
-  ValueNotifier<bool> confirmAbleNotifier = ValueNotifier(false);
-  late LabelConfiguration? _labelConfig = widget.labelConfig;
+  late final LabelConfiguration? _labelConfig = widget.labelConfig;
 
   @override
   void initState() {
@@ -53,7 +54,6 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
 
   @override
   void dispose() {
-    confirmAbleNotifier.dispose();
     super.dispose();
   }
 
@@ -70,8 +70,7 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
             if (_labelConfig?.name != null && _labelConfig?.name != '')
               Text(
                 _labelConfig!.name!,
-                style: _labelConfig?.textStyle,
-                // style: TextStyle(),
+                style: _labelConfig.textStyle,
               ),
             CalendarPickerViewWidget(
               initDate: widget.initDate,
@@ -80,11 +79,15 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
               visibleToday: widget.visibleToday,
               pickType: widget.pickerType ?? CalendarPickerType.range,
               onChanged: (List<DateTime> items) {
-                confirmAbleNotifier.value = items.length == 2;
+                if (widget.pickerType == CalendarPickerType.single) {
+                  if (items.isEmpty) return;
+                  widget.onTapDate?.call(items.first);
+                  return;
+                }
                 if (items.length <= 1) return;
                 _fromDateTime = items.first;
                 _toDateTime = items.last;
-                widget.onChanged.call(_fromDateTime!, _toDateTime!);
+                widget.onChanged?.call(_fromDateTime!, _toDateTime!);
               },
             ),
           ],

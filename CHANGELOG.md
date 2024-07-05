@@ -1,3 +1,8 @@
+## 0.0.5
+
+* Add support CalendarPickerType `single` & `range`
+* Fix bug: cannot get current date
+
 ## 0.0.4
 
 * Change platform support: `android` and `ios`

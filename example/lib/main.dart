@@ -39,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
             showBottomCalendarPicker(
               context,
               labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
-              onChanged: (DateTime fromDate, DateTime toDate) {},
+              pickType: CalendarPickerType.single,
+              onTapDate: (val) {},
             );
           },
           child: const Text("Show calendar"),
