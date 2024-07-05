@@ -1,10 +1,9 @@
-import 'package:calendar_picker/src/calendar_picker_inherited.dart';
-import 'package:calendar_picker/src/styles/calendar_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../calendar_picker.dart';
+import 'calendar_picker_inherited.dart';
 import 'component/calendar_picker_view_widget.dart';
-import 'enum/enum.dart';
 
 typedef GetDateCalendarBuilder = void Function(DateTime fromDate, DateTime toDate);
 

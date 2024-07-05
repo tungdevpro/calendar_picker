@@ -1,6 +1,7 @@
-import 'package:calendar_picker/src/calendar_picker_inherited.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../calendar_picker_inherited.dart';
 
 // ignore: must_be_immutable
 class CustomButtonWidget extends StatelessWidget {

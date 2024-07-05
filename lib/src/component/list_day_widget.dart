@@ -1,10 +1,9 @@
-import 'package:calendar_picker/src/calendar_picker_inherited.dart';
-import 'package:calendar_picker/src/extension/extension.dart';
+import 'package:calendar_picker/calendar_picker.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../model/day_model.dart';
+import '../calendar_picker_inherited.dart';
 
 class AppCalendarListDayWidget extends StatefulWidget {
   final List<DateTime>? initDate;
