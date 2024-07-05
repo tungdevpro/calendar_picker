@@ -1,9 +1,9 @@
+import 'package:easy_calendar_picker/src/app_calendar_resource.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 import '../calendar_picker.dart';
 import 'calendar_picker_inherited.dart';
-import 'component/calendar_picker_view_widget.dart';
+import 'common/component/calendar_picker_view_widget.dart';
 
 typedef GetDateCalendarBuilder = void Function(DateTime fromDate, DateTime toDate);
 
@@ -11,15 +11,11 @@ class CalendarPickerWidget extends StatefulWidget {
   final List<DateTime>? initDate;
   final DateTime? minDate;
   final DateTime? maxDate;
-  final GetDateCalendarBuilder onConfirm;
+  final GetDateCalendarBuilder onChanged;
   final bool visibleToday;
-  final String? label;
   final CalendarStyle? calendarStyle;
-  final VoidCallback? onBack;
-  final String cancelText;
-  final String confirmText;
   final List<String>? weekdays;
-  final Widget? actionWidget;
+  final LabelConfiguration? labelConfig;
 
   const CalendarPickerWidget({
     super.key,
@@ -27,14 +23,10 @@ class CalendarPickerWidget extends StatefulWidget {
     this.minDate,
     this.maxDate,
     this.visibleToday = true,
-    this.label,
     this.calendarStyle,
-    this.onBack,
-    this.cancelText = 'Cancel',
-    this.confirmText = 'Confirm',
     this.weekdays,
-    required this.onConfirm,
-    this.actionWidget,
+    this.labelConfig,
+    required this.onChanged,
   });
 
   @override
@@ -48,6 +40,7 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
   DateTime? _maxDate;
 
   ValueNotifier<bool> confirmAbleNotifier = ValueNotifier(false);
+  late LabelConfiguration? _labelConfig = widget.labelConfig;
 
   @override
   void initState() {
@@ -66,16 +59,18 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
   Widget build(BuildContext context) {
     return CalendarPickerInherited(
       calendarStyle: widget.calendarStyle ?? CalendarStyle.simple(),
-      weekdays: widget.weekdays,
+      weekdays: (widget.weekdays?.isNotEmpty ?? false) ? widget.weekdays : Resource.weekdayShorts,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (widget.label != null && widget.label != '') ...[
-              Text(widget.label!),
-              const Gap(24),
-            ],
+            if (_labelConfig?.name != null && _labelConfig?.name != '')
+              Text(
+                _labelConfig!.name!,
+                style: _labelConfig?.textStyle,
+                // style: TextStyle(),
+              ),
             CalendarPickerViewWidget(
               initDate: widget.initDate,
               minDate: _minDate,
@@ -87,18 +82,12 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
                 if (items.length <= 1) return;
                 _fromDateTime = items.first;
                 _toDateTime = items.last;
-                widget.onConfirm.call(_fromDateTime!, _toDateTime!);
+                widget.onChanged.call(_fromDateTime!, _toDateTime!);
               },
             ),
-            if(widget.actionWidget != null) ...[
-              const Gap(8),
-              widget.actionWidget!,
-            ],
           ],
         ),
       ),
     );
   }
-
-
 }

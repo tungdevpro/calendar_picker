@@ -36,19 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: FilledButton(
           onPressed: () {
-            showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                builder: (_) {
-                  return CalendarPickerWidget(
-                    minDate: DateTime(2024, 3, 8),
-                    maxDate: DateTime(2025, 10, 1),
-                    onConfirm: (fromDate, toDate) {},
-                    actionWidget: const Row(
-                      children: [],
-                    ),
-                  );
-                });
+            showBottomCalendarPicker(
+              context,
+              labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
+              onChanged: (DateTime fromDate, DateTime toDate) {},
+            );
           },
           child: const Text("Show calendar"),
         ),

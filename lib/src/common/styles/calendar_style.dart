@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../constant/color_constants.dart';
+import '../color_constants.dart';
+import '../text_size.dart';
 import 'button_style_color.dart';
 
 class CalendarStyle {
@@ -13,6 +14,7 @@ class CalendarStyle {
   final Color? nextColor;
   final Color? nextDisableColor;
   final ButtonStyleColor? buttonStyleColor;
+  final double? fontSize;
 
   CalendarStyle({
     this.primaryColor,
@@ -24,6 +26,7 @@ class CalendarStyle {
     this.nextColor,
     this.nextDisableColor,
     this.buttonStyleColor,
+    this.fontSize,
   });
 
   factory CalendarStyle.simple() {
@@ -42,6 +45,7 @@ class CalendarStyle {
         textDisable: ColorConstants.textButtonDisable,
         textEnable: Colors.white,
       ),
+      fontSize: TextSize.medium,
     );
   }
 

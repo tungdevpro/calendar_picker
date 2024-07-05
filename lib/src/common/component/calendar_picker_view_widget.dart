@@ -3,7 +3,7 @@ import 'package:easy_calendar_picker/calendar_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../calendar_picker_inherited.dart';
+import '../../calendar_picker_inherited.dart';
 import 'list_day_widget.dart';
 
 class CalendarPickerViewWidget extends StatefulWidget {

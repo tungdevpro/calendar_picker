@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'styles/calendar_style.dart';
+import 'common/styles/calendar_style.dart';
 
 class CalendarPickerInherited extends InheritedWidget {
   const CalendarPickerInherited({
     super.key,
     required super.child,
     required this.calendarStyle,
-    this.weekdays = const [],
+    this.weekdays,
   });
 
   final CalendarStyle calendarStyle;
@@ -19,7 +19,7 @@ class CalendarPickerInherited extends InheritedWidget {
 
   static CalendarPickerInherited of(BuildContext context) {
     final CalendarPickerInherited? result = maybeOf(context);
-    assert(result != null, 'No CalendarPickerRoot found in context');
+    assert(result != null, 'No CalendarPickerInherited found in context');
     return result!;
   }
 
