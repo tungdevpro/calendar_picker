@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Change platform support: `android` and `ios`
+
 ## 0.0.3
 
 * Add method `showButtonCalendarPicker`
