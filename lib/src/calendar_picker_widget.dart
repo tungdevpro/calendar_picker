@@ -16,6 +16,7 @@ class CalendarPickerWidget extends StatefulWidget {
   final CalendarStyle? calendarStyle;
   final List<String>? weekdays;
   final LabelConfiguration? labelConfig;
+  final CalendarPickerType? pickerType;
 
   const CalendarPickerWidget({
     super.key,
@@ -26,6 +27,7 @@ class CalendarPickerWidget extends StatefulWidget {
     this.calendarStyle,
     this.weekdays,
     this.labelConfig,
+    this.pickerType,
     required this.onChanged,
   });
 
@@ -76,7 +78,7 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
               minDate: _minDate,
               maxDate: _maxDate,
               visibleToday: widget.visibleToday,
-              pickType: AppCalendarPickerType.range,
+              pickType: widget.pickerType ?? CalendarPickerType.range,
               onChanged: (List<DateTime> items) {
                 confirmAbleNotifier.value = items.length == 2;
                 if (items.length <= 1) return;

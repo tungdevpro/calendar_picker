@@ -12,7 +12,7 @@ class CalendarPickerViewWidget extends StatefulWidget {
   final DateTime? maxDate;
   final ValueChanged<List<DateTime>> onChanged;
   final bool visibleToday;
-  final AppCalendarPickerType pickType;
+  final CalendarPickerType pickType;
 
   const CalendarPickerViewWidget({
     super.key,

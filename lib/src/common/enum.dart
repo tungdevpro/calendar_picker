@@ -1,5 +1,1 @@
-
-enum AppCalendarPickerType {
-  single,
-  range
-}
+enum CalendarPickerType { single, range }
