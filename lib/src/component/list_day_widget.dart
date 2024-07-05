@@ -1,4 +1,4 @@
-import 'package:calendar_picker/calendar_picker.dart';
+import 'package:easy_calendar_picker/calendar_picker.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
