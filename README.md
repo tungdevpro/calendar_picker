@@ -1,26 +1,55 @@
-# Calendar Picker
+# Easy Calendar Picker
 
-This package provides feature choice range date
+[![Pub Version](https://img.shields.io/pub/v/easy_calendar_picker.svg)](https://pub.dev/packages/easy_calendar_picker)
 
-## Feature
+A simple and customizable calendar picker for Flutter.
 
-![img](https://raw.githubusercontent.com/tungdevpro/calendar_picker/main/example/screenshots/2.png)
+## Features
+
+- [x] Select single dates
+- [x] Select date ranges
+- [ ] Customize appearance
+- [ ] Localization support
+
+## Installation
+
+Add the following to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  easy_calendar_picker: ^0.0.5
+```
+
+Then run flutter pub get.
 
 ## Usage
+Import the package:
 
-To display:
 ```dart
-showModalBottomSheet(
-context: context,
-isScrollControlled: true,
-builder: (_) {
-    return CalendarPickerWidget(
-        minDate: DateTime(2024, 3, 8),
-        maxDate: DateTime(2025, 10, 1),
-        onConfirm: (fromDate, toDate) {},
-        actionWidget: const Row(
-            children: [],
-        ),
-    );
-});
+import 'package:easy_calendar_picker/easy_calendar_picker.dart';
 ```
+
+### Single Date Picker
+```dart
+showBottomCalendarPicker(
+    context,
+    labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
+    pickType: CalendarPickerType.single,
+    onTapDate: (val) {},
+);
+```
+
+### Date Range Picker
+```dart
+showBottomCalendarPicker(
+    context,
+    labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
+    pickType: CalendarPickerType.range,
+    onChanged: (fromDate, toDate) {},
+);
+```
+## Maintainers
+- [tungdo](https://github.com/tungdevpro)
+
+## Contributions
+Contributions are welcome! Please open an issue or submit a pull request.
