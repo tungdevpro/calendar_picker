@@ -1,3 +1,6 @@
+## 0.0.6
+* Update something
+
 ## 0.0.5
 
 * Add support CalendarPickerType `single` & `range`
