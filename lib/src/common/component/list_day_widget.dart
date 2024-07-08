@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:easy_calendar_picker/easy_calendar_picker.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
@@ -5,14 +7,14 @@ import 'package:gap/gap.dart';
 
 import '../../calendar_picker_inherited.dart';
 
-class AppCalendarListDayWidget extends StatefulWidget {
+class ListDayWidget extends StatefulWidget {
   final List<DateTime>? initDate;
   final bool visibleToday;
   final List<DayModel> days;
   final ValueChanged<List<DateTime>> onChanged;
   final CalendarPickerType pickType;
 
-  const AppCalendarListDayWidget({
+  const ListDayWidget({
     super.key,
     required this.visibleToday,
     required this.days,
@@ -22,10 +24,10 @@ class AppCalendarListDayWidget extends StatefulWidget {
   });
 
   @override
-  State<AppCalendarListDayWidget> createState() => _AppCalendarListDayWidgetState();
+  State<ListDayWidget> createState() => _ListDayWidgetState();
 }
 
-class _AppCalendarListDayWidgetState extends State<AppCalendarListDayWidget> {
+class _ListDayWidgetState extends State<ListDayWidget> {
   late List<DayModel> _days;
   List<DayModel> choices = [];
 
@@ -39,7 +41,7 @@ class _AppCalendarListDayWidgetState extends State<AppCalendarListDayWidget> {
   }
 
   @override
-  void didUpdateWidget(covariant AppCalendarListDayWidget oldWidget) {
+  void didUpdateWidget(covariant ListDayWidget oldWidget) {
     if (oldWidget.days != widget.days) _init();
     super.didUpdateWidget(oldWidget);
   }

@@ -11,6 +11,7 @@ export 'src/common/enum.dart';
 export 'src/common/extension.dart';
 export 'src/common/model/day_model.dart';
 
+/// Method support display calendar picker
 Future<T?> showBottomCalendarPicker<T>(
   BuildContext context, {
   GetDateCalendarBuilder? onRangeChanged,

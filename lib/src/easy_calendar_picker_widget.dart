@@ -5,20 +5,44 @@ import '../easy_calendar_picker.dart';
 import 'calendar_picker_inherited.dart';
 import 'common/component/calendar_picker_view_widget.dart';
 
+/// Signature for the `builder` function which provide [fromDate] and [toDate]
 typedef GetDateCalendarBuilder = void Function(DateTime? fromDate, DateTime? toDate);
 
+///
 class EasyCalendarPickerWidget extends StatefulWidget {
+  /// Represents date data
   final List<DateTime>? initDate;
+
+  /// Represents date data
   final DateTime? minDate;
+
+  /// Represents date data
   final DateTime? maxDate;
+
+  /// `onRangeChanged` is a callback function (`typedef GetDateCalendarBuilder`) that
+  /// is called when the user changes the selected date range.
   final GetDateCalendarBuilder? onRangeChanged;
+
+  /// Option to display current date
   final bool visibleToday;
+
+  /// Configure calendar colors
   final CalendarStyle? calendarStyle;
+
+  /// Displays the names of the days of the week
   final List<String>? weekdays;
+
+  /// stores label configuration
   final LabelConfiguration? labelConfig;
+
+  /// `pickType` is a enum. Support selected date single & range
   final CalendarPickerType? pickType;
+
+  /// `onTapDate` is a callback function that
+  /// is called when the user changes the selected date single
   final ValueChanged<DateTime>? onTapDate;
 
+  // ignore: public_member_api_docs
   const EasyCalendarPickerWidget({
     super.key,
     this.initDate,
@@ -50,11 +74,6 @@ class _CalendarPickerWidgetState extends State<EasyCalendarPickerWidget> {
     _minDate = widget.minDate ?? DateTime(1930);
     _maxDate = widget.maxDate ?? DateTime(DateTime.now().year + 500);
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override

@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:intl/intl.dart';
 
 extension DateTimeExt on DateTime {

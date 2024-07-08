@@ -1,8 +1,10 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:flutter/material.dart';
 
 import '../color_constants.dart';
-import '../text_size.dart';
 
+/// Configure calendar colors
 class CalendarStyle {
   final Color? primaryColor;
   final Color? placeholderColor;
@@ -33,7 +35,7 @@ class CalendarStyle {
       previousColor: Colors.black,
       nextDisableColor: Colors.grey.shade300,
       previousDisableColor: Colors.grey.shade300,
-      fontSize: TextSize.medium,
+      fontSize: 14,
     );
   }
 

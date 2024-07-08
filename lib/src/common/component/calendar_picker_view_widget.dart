@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 import 'package:dartx/dartx.dart';
 import 'package:easy_calendar_picker/easy_calendar_picker.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +123,7 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
         const Gap(12),
         _buildTimeWidget(),
         const Gap(8),
-        AppCalendarListDayWidget(
+        ListDayWidget(
           visibleToday: widget.visibleToday,
           days: _days,
           onChanged: widget.onChanged,

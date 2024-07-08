@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs
 
 class DayModel {
   final String? text;
   final DateTime date;
   final bool enable;
-  final Color? color;
 
-  DayModel({this.text, required this.date, required this.enable, this.color});
+  DayModel({this.text, required this.date, required this.enable});
 
   @override
   String toString() {
