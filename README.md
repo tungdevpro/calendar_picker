@@ -45,7 +45,7 @@ showBottomCalendarPicker(
     context,
     labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
     pickType: CalendarPickerType.range,
-    onChanged: (fromDate, toDate) {},
+    onRangeChanged: (fromDate, toDate) {},
 );
 ```
 ## Maintainers
