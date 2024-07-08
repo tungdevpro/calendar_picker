@@ -1,3 +1,7 @@
+## 0.1.0
+
+* fix: update description for pubspec.yaml
+
 ## 0.0.9
 
 * hotfix: remove button style color

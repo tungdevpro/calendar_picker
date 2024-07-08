@@ -1,6 +1,6 @@
 name: easy_calendar_picker
-description: "A Calendar Picker package"
-version: 0.0.9
+description: "A simple and customizable calendar picker for Flutter. This package support single and range pick"
+version: 0.1.0
 homepage: https://github.com/tungdevpro/calendar_picker
 
 environment:
