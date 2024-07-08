@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Update something
+
 ## 0.0.7
 
 * hotfix: change `onChanged` to `onRangeChange`
