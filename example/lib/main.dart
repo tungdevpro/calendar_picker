@@ -1,4 +1,4 @@
-import 'package:easy_calendar_picker/calendar_picker.dart';
+import 'package:easy_calendar_picker/easy_calendar_picker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
                   pickType: CalendarPickerType.range,
+                  calendarStyle: CalendarStyle(textPlaceholderColor: Colors.red, placeholderColor: Colors.pink),
                   onTapDate: (val) {
                     setState(() {
                       _dateTime = val;

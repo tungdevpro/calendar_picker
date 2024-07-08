@@ -1,13 +1,13 @@
-import 'package:easy_calendar_picker/src/app_calendar_resource.dart';
+import 'package:easy_calendar_picker/src/resource.dart';
 import 'package:flutter/material.dart';
 
-import '../calendar_picker.dart';
+import '../easy_calendar_picker.dart';
 import 'calendar_picker_inherited.dart';
 import 'common/component/calendar_picker_view_widget.dart';
 
 typedef GetDateCalendarBuilder = void Function(DateTime? fromDate, DateTime? toDate);
 
-class CalendarPickerWidget extends StatefulWidget {
+class EasyCalendarPickerWidget extends StatefulWidget {
   final List<DateTime>? initDate;
   final DateTime? minDate;
   final DateTime? maxDate;
@@ -19,7 +19,7 @@ class CalendarPickerWidget extends StatefulWidget {
   final CalendarPickerType? pickType;
   final ValueChanged<DateTime>? onTapDate;
 
-  const CalendarPickerWidget({
+  const EasyCalendarPickerWidget({
     super.key,
     this.initDate,
     this.minDate,
@@ -34,10 +34,10 @@ class CalendarPickerWidget extends StatefulWidget {
   });
 
   @override
-  State<CalendarPickerWidget> createState() => _CalendarPickerWidgetState();
+  State<EasyCalendarPickerWidget> createState() => _CalendarPickerWidgetState();
 }
 
-class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
+class _CalendarPickerWidgetState extends State<EasyCalendarPickerWidget> {
   DateTime? _fromDateTime;
   DateTime? _toDateTime;
   DateTime? _minDate;
@@ -60,7 +60,16 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
   @override
   Widget build(BuildContext context) {
     return CalendarPickerInherited(
-      calendarStyle: widget.calendarStyle ?? CalendarStyle.simple(),
+      calendarStyle: CalendarStyle.simple().copyWith(
+        primaryColor: widget.calendarStyle?.primaryColor,
+        placeholderColor: widget.calendarStyle?.placeholderColor,
+        textPlaceholderColor: widget.calendarStyle?.textPlaceholderColor,
+        nextColor: widget.calendarStyle?.nextColor,
+        previousColor: widget.calendarStyle?.previousColor,
+        nextDisableColor: widget.calendarStyle?.nextDisableColor,
+        previousDisableColor: widget.calendarStyle?.previousDisableColor,
+        fontSize: widget.calendarStyle?.fontSize,
+      ),
       weekdays: (widget.weekdays?.isNotEmpty ?? false) ? widget.weekdays : Resource.weekdayShorts,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -1,4 +1,4 @@
-import 'package:easy_calendar_picker/calendar_picker.dart';
+import 'package:easy_calendar_picker/easy_calendar_picker.dart';
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -120,9 +120,8 @@ class _AppCalendarListDayWidgetState extends State<AppCalendarListDayWidget> {
                     child: Text(
                       '${e.text}',
                       style: TextStyle(
-                          color: isLast || isFirst
-                              ? Colors.white
-                              : (!e.enable ? CalendarPickerInherited.of(context).calendarStyle.getTextButtonDisableColor : null)),
+                          color:
+                              isLast || isFirst ? Colors.white : (!e.enable ? CalendarPickerInherited.of(context).calendarStyle.textPlaceholderColor : null)),
                     ),
                   ),
                   if (isToday)

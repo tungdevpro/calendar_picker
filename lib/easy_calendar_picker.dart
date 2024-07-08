@@ -2,10 +2,10 @@ library easy_calendar_picker;
 
 import 'package:flutter/material.dart';
 
-import 'calendar_picker.dart';
+import 'easy_calendar_picker.dart';
 
 export 'src/common/styles/label_style.dart';
-export 'src/calendar_picker_widget.dart';
+export 'src/easy_calendar_picker_widget.dart';
 export 'src/common/styles/calendar_style.dart';
 export 'src/common/enum.dart';
 export 'src/common/extension.dart';
@@ -24,12 +24,20 @@ Future<T?> showBottomCalendarPicker<T>(
   CalendarStyle? calendarStyle,
   LabelConfiguration? labelConfig,
   CalendarPickerType? pickType,
+  Color? backgroundColor,
+  bool useRootNavigator = false,
+  bool enableDrag = true,
+  double? elevation,
 }) async {
   return showModalBottomSheet<T?>(
     context: context,
     isScrollControlled: isScrollControlled,
+    backgroundColor: backgroundColor,
+    useRootNavigator: useRootNavigator,
+    elevation: elevation,
+    enableDrag: enableDrag,
     builder: (_) {
-      return CalendarPickerWidget(
+      return EasyCalendarPickerWidget(
         onRangeChanged: onRangeChanged,
         onTapDate: onTapDate,
         minDate: minDate,
