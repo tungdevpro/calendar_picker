@@ -5,18 +5,18 @@ import '../calendar_picker.dart';
 import 'calendar_picker_inherited.dart';
 import 'common/component/calendar_picker_view_widget.dart';
 
-typedef GetDateCalendarBuilder = void Function(DateTime fromDate, DateTime toDate);
+typedef GetDateCalendarBuilder = void Function(DateTime? fromDate, DateTime? toDate);
 
 class CalendarPickerWidget extends StatefulWidget {
   final List<DateTime>? initDate;
   final DateTime? minDate;
   final DateTime? maxDate;
-  final GetDateCalendarBuilder? onChanged;
+  final GetDateCalendarBuilder? onRangeChanged;
   final bool visibleToday;
   final CalendarStyle? calendarStyle;
   final List<String>? weekdays;
   final LabelConfiguration? labelConfig;
-  final CalendarPickerType? pickerType;
+  final CalendarPickerType? pickType;
   final ValueChanged<DateTime>? onTapDate;
 
   const CalendarPickerWidget({
@@ -28,9 +28,9 @@ class CalendarPickerWidget extends StatefulWidget {
     this.calendarStyle,
     this.weekdays,
     this.labelConfig,
-    this.pickerType,
+    this.pickType,
     this.onTapDate,
-    required this.onChanged,
+    required this.onRangeChanged,
   });
 
   @override
@@ -77,17 +77,20 @@ class _CalendarPickerWidgetState extends State<CalendarPickerWidget> {
               minDate: _minDate,
               maxDate: _maxDate,
               visibleToday: widget.visibleToday,
-              pickType: widget.pickerType ?? CalendarPickerType.range,
+              pickType: widget.pickType ?? CalendarPickerType.range,
               onChanged: (List<DateTime> items) {
-                if (widget.pickerType == CalendarPickerType.single) {
+                if (widget.pickType == CalendarPickerType.single) {
                   if (items.isEmpty) return;
                   widget.onTapDate?.call(items.first);
                   return;
                 }
-                if (items.length <= 1) return;
-                _fromDateTime = items.first;
-                _toDateTime = items.last;
-                widget.onChanged?.call(_fromDateTime!, _toDateTime!);
+                if (items.length <= 1) {
+                  widget.onRangeChanged?.call(items.firstOrNull, null);
+                  return;
+                }
+                _fromDateTime = items.firstOrNull;
+                _toDateTime = items.lastOrNull;
+                widget.onRangeChanged?.call(_fromDateTime!, _toDateTime!);
               },
             ),
           ],

@@ -165,9 +165,9 @@ class _AppCalendarListDayWidgetState extends State<AppCalendarListDayWidget> {
         }
       }
     });
-    if (choices.isNotEmpty) {
-      widget.onChanged.call(choices.map<DateTime>((e) => e.date).toList());
-    }
+    // if (choices.isNotEmpty) {
+    widget.onChanged.call(choices.isEmpty ? <DateTime>[] : choices.map<DateTime>((e) => e.date).toList());
+    // }
   }
 
   Color? _getElementColor({required DateTime date, required bool isEnable}) {

@@ -30,20 +30,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  DateTime? _dateTime;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: FilledButton(
-          onPressed: () {
-            showBottomCalendarPicker(
-              context,
-              labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
-              pickType: CalendarPickerType.single,
-              onTapDate: (val) {},
-            );
-          },
-          child: const Text("Show calendar"),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text("$_dateTime"),
+            const SizedBox(height: 30),
+            FilledButton(
+              onPressed: () {
+                showBottomCalendarPicker(
+                  context,
+                  labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
+                  pickType: CalendarPickerType.range,
+                  onTapDate: (val) {
+                    setState(() {
+                      _dateTime = val;
+                    });
+                  },
+                  onRangeChanged: (fromDate, toDate) {},
+                );
+              },
+              child: const Text("Show calendar"),
+            ),
+          ],
         ),
       ),
     );

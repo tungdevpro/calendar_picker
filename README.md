@@ -8,8 +8,8 @@ A simple and customizable calendar picker for Flutter.
 
 - [x] Select single dates
 - [x] Select date ranges
-- [ ] Customize appearance
-- [ ] Localization support
+- [ ] Customize appearance (pending)
+- [ ] Localization support (pending)
 
 ## Installation
 
