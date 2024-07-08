@@ -1,4 +1,11 @@
+## 0.0.7
+
+* hotfix: change `onChanged` to `onRangeChange`
+* hotfix: change `pickerType` to `pickType`
+* feat: allow get empty value for CalendarPickerType.range
+
 ## 0.0.6
+
 * Update something
 
 ## 0.0.5
