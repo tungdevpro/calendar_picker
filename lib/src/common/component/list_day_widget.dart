@@ -208,8 +208,9 @@ class _ListDayWidgetState extends State<ListDayWidget> {
       {required DateTime date, required bool isEnable}) {
     if (isEnable) {
       if (date.isAtSameDayAs(choices.first.date) ||
-          date.isAtSameDayAs(choices.last.date))
+          date.isAtSameDayAs(choices.last.date)) {
         return BorderRadius.circular(50);
+      }
       return BorderRadius.zero;
     }
     return null;

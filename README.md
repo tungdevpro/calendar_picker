@@ -17,7 +17,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  easy_calendar_picker: ^0.0.5
+  easy_calendar_picker: ^0.1.3
 ```
 
 Then run flutter pub get.

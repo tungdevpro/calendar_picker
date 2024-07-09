@@ -1,3 +1,7 @@
+## 0.1.3
+
+* fix: statements in an if should be enclosed in a block
+
 ## 0.1.2
 
 * update something
