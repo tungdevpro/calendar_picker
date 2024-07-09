@@ -27,7 +27,8 @@ class CalendarPickerViewWidget extends StatefulWidget {
   });
 
   @override
-  State<CalendarPickerViewWidget> createState() => _CalendarPickerViewWidgetState();
+  State<CalendarPickerViewWidget> createState() =>
+      _CalendarPickerViewWidgetState();
 }
 
 class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
@@ -40,8 +41,12 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
   bool nextEnable = true;
   bool isFromDateEnable = true;
 
-  Color? get previousColorEnable => !previousEnable ? CalendarPickerInherited.of(context).calendarStyle.previousDisableColor : null;
-  Color? get nextColorEnable => !nextEnable ? CalendarPickerInherited.of(context).calendarStyle.nextDisableColor : null;
+  Color? get previousColorEnable => !previousEnable
+      ? CalendarPickerInherited.of(context).calendarStyle.previousDisableColor
+      : null;
+  Color? get nextColorEnable => !nextEnable
+      ? CalendarPickerInherited.of(context).calendarStyle.nextDisableColor
+      : null;
 
   @override
   void initState() {
@@ -58,15 +63,22 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
   }
 
   void _setupPreNext(DateTime inputDate) {
-    previousEnable = _minDate != null ? !DateTime(inputDate.year, inputDate.month, inputDate.day).isBefore(_minDate!) : true;
-    nextEnable = widget.maxDate != null ? !DateTime(inputDate.year, inputDate.month + 1, inputDate.day).isAfter(widget.maxDate!) : true;
+    previousEnable = _minDate != null
+        ? !DateTime(inputDate.year, inputDate.month, inputDate.day)
+            .isBefore(_minDate!)
+        : true;
+    nextEnable = widget.maxDate != null
+        ? !DateTime(inputDate.year, inputDate.month + 1, inputDate.day)
+            .isAfter(widget.maxDate!)
+        : true;
   }
 
   void _setupDays({DateTime? inputDate}) {
     _days = [];
     for (var i = 0; i < _daysInMonth; i++) {
       final firstDay = _today.firstDayOfMonth.add(Duration(days: i));
-      bool isAfter = widget.maxDate != null ? firstDay.isAfter(widget.maxDate!) : true;
+      bool isAfter =
+          widget.maxDate != null ? firstDay.isAfter(widget.maxDate!) : true;
       bool isBefore = _minDate != null ? firstDay.isBefore(_minDate!) : true;
       if (inputDate != null && !isFromDateEnable) {
         isBefore = firstDay.isBefore(inputDate);
@@ -90,7 +102,10 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
     var i = space;
     while (i > 0) {
       int day = prevMonth.daysInMonth - (i.minus(1)!);
-      items.add(DayModel(text: day.toString(), date: DateTime(prevMonth.year, prevMonth.month, day), enable: false));
+      items.add(DayModel(
+          text: day.toString(),
+          date: DateTime(prevMonth.year, prevMonth.month, day),
+          enable: false));
       i--;
     }
     if (items.isEmpty) return;
@@ -138,11 +153,18 @@ class _CalendarPickerViewWidgetState extends State<CalendarPickerViewWidget> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        InkWell(onTap: _didTapPrevious, child: Icon(Icons.keyboard_arrow_left, color: previousColorEnable, size: 22)),
+        InkWell(
+            onTap: _didTapPrevious,
+            child: Icon(Icons.keyboard_arrow_left,
+                color: previousColorEnable, size: 22)),
         const Spacer(),
-        Text(_displayToday(), style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
+        Text(_displayToday(),
+            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 15)),
         const Spacer(),
-        InkWell(onTap: _didTapNext, child: Icon(Icons.keyboard_arrow_right, color: nextColorEnable, size: 22)),
+        InkWell(
+            onTap: _didTapNext,
+            child: Icon(Icons.keyboard_arrow_right,
+                color: nextColorEnable, size: 22)),
       ],
     );
   }

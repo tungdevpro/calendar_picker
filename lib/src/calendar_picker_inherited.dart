@@ -22,7 +22,8 @@ class CalendarPickerInherited extends InheritedWidget {
 
   /// Static method to retrieve `CalendarPickerInherited` from the widget tree
   static CalendarPickerInherited? maybeOf(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<CalendarPickerInherited>();
+    return context
+        .dependOnInheritedWidgetOfExactType<CalendarPickerInherited>();
   }
 
   /// Static method to retrieve `CalendarPickerInherited` from the widget tree

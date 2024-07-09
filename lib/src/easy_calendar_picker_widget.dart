@@ -6,7 +6,8 @@ import 'calendar_picker_inherited.dart';
 import 'common/component/calendar_picker_view_widget.dart';
 
 /// Signature for the `builder` function which provide [fromDate] and [toDate]
-typedef GetDateCalendarBuilder = void Function(DateTime? fromDate, DateTime? toDate);
+typedef GetDateCalendarBuilder = void Function(
+    DateTime? fromDate, DateTime? toDate);
 
 ///
 class EasyCalendarPickerWidget extends StatefulWidget {
@@ -89,7 +90,9 @@ class _CalendarPickerWidgetState extends State<EasyCalendarPickerWidget> {
         previousDisableColor: widget.calendarStyle?.previousDisableColor,
         fontSize: widget.calendarStyle?.fontSize,
       ),
-      weekdays: (widget.weekdays?.isNotEmpty ?? false) ? widget.weekdays : Resource.weekdayShorts,
+      weekdays: (widget.weekdays?.isNotEmpty ?? false)
+          ? widget.weekdays
+          : Resource.weekdayShorts,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(

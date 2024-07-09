@@ -45,9 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 showBottomCalendarPicker(
                   context,
-                  labelConfig: LabelConfiguration(name: 'App Calendar', textStyle: const TextStyle(fontSize: 18)),
+                  labelConfig: LabelConfiguration(
+                      name: 'App Calendar',
+                      textStyle: const TextStyle(fontSize: 18)),
                   pickType: CalendarPickerType.range,
-                  calendarStyle: CalendarStyle(textPlaceholderColor: Colors.red, placeholderColor: Colors.pink),
+                  calendarStyle: CalendarStyle(
+                      textPlaceholderColor: Colors.red,
+                      placeholderColor: Colors.pink),
                   onTapDate: (val) {
                     setState(() {
                       _dateTime = val;

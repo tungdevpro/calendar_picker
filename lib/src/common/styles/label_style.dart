@@ -10,5 +10,10 @@ class LabelConfiguration {
   final String? fontFamily;
   final TextAlign? textAlign;
 
-  LabelConfiguration({this.name, this.textStyle, this.fontSize, this.fontFamily, this.textAlign});
+  LabelConfiguration(
+      {this.name,
+      this.textStyle,
+      this.fontSize,
+      this.fontFamily,
+      this.textAlign});
 }

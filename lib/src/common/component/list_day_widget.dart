@@ -34,7 +34,9 @@ class _ListDayWidgetState extends State<ListDayWidget> {
   @override
   void initState() {
     if (widget.initDate != null) {
-      choices = widget.initDate!.map<DayModel>((e) => DayModel(date: e, enable: true)).toList();
+      choices = widget.initDate!
+          .map<DayModel>((e) => DayModel(date: e, enable: true))
+          .toList();
     }
     _init();
     super.initState();
@@ -80,15 +82,19 @@ class _ListDayWidgetState extends State<ListDayWidget> {
       itemCount: _days.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7, mainAxisSpacing: 8),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 7, mainAxisSpacing: 8),
       itemBuilder: (context, int index) {
         final e = _days[index];
         bool isToday = e.date.isToday && widget.visibleToday;
         bool isBetween = false;
-        bool isFirst = choices.isNotEmpty ? choices.first.date.isAtSameDayAs(e.date) : false;
+        bool isFirst = choices.isNotEmpty
+            ? choices.first.date.isAtSameDayAs(e.date)
+            : false;
         bool isLast = false;
         if (choices.length > 1) {
-          isBetween = e.date.isBetween(choices.first.date, choices.last.date) ?? false;
+          isBetween =
+              e.date.isBetween(choices.first.date, choices.last.date) ?? false;
           isLast = choices.last.date.isAtSameDayAs(e.date);
         }
         bool isEnable = (isBetween || isFirst);
@@ -110,20 +116,30 @@ class _ListDayWidgetState extends State<ListDayWidget> {
                       left: left,
                       width: width / 2,
                       child: Container(
-                        color: choices.length == 1 ? Colors.transparent : CalendarPickerInherited.of(context).calendarStyle.placeholderColor,
+                        color: choices.length == 1
+                            ? Colors.transparent
+                            : CalendarPickerInherited.of(context)
+                                .calendarStyle
+                                .placeholderColor,
                       ),
                     ),
                   Container(
                     decoration: BoxDecoration(
                       color: _getElementColor(date: e.date, isEnable: isEnable),
-                      borderRadius: _getElementBorderRadius(date: e.date, isEnable: isEnable),
+                      borderRadius: _getElementBorderRadius(
+                          date: e.date, isEnable: isEnable),
                     ),
                     alignment: Alignment.center,
                     child: Text(
                       '${e.text}',
                       style: TextStyle(
-                          color:
-                              isLast || isFirst ? Colors.white : (!e.enable ? CalendarPickerInherited.of(context).calendarStyle.textPlaceholderColor : null)),
+                          color: isLast || isFirst
+                              ? Colors.white
+                              : (!e.enable
+                                  ? CalendarPickerInherited.of(context)
+                                      .calendarStyle
+                                      .textPlaceholderColor
+                                  : null)),
                     ),
                   ),
                   if (isToday)
@@ -131,7 +147,9 @@ class _ListDayWidgetState extends State<ListDayWidget> {
                       width: 8,
                       height: 8,
                       decoration: BoxDecoration(
-                        color: CalendarPickerInherited.of(context).calendarStyle.primaryColor,
+                        color: CalendarPickerInherited.of(context)
+                            .calendarStyle
+                            .primaryColor,
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -167,24 +185,31 @@ class _ListDayWidgetState extends State<ListDayWidget> {
       }
     });
     // if (choices.isNotEmpty) {
-    widget.onChanged.call(choices.isEmpty ? <DateTime>[] : choices.map<DateTime>((e) => e.date).toList());
+    widget.onChanged.call(choices.isEmpty
+        ? <DateTime>[]
+        : choices.map<DateTime>((e) => e.date).toList());
     // }
   }
 
   Color? _getElementColor({required DateTime date, required bool isEnable}) {
     Color? color;
     if (isEnable) {
-      if (date.isAtSameDayAs(choices.first.date) || date.isAtSameDayAs(choices.last.date)) {
+      if (date.isAtSameDayAs(choices.first.date) ||
+          date.isAtSameDayAs(choices.last.date)) {
         return CalendarPickerInherited.of(context).calendarStyle.primaryColor;
       }
-      color = CalendarPickerInherited.of(context).calendarStyle.placeholderColor;
+      color =
+          CalendarPickerInherited.of(context).calendarStyle.placeholderColor;
     }
     return color;
   }
 
-  BorderRadius? _getElementBorderRadius({required DateTime date, required bool isEnable}) {
+  BorderRadius? _getElementBorderRadius(
+      {required DateTime date, required bool isEnable}) {
     if (isEnable) {
-      if (date.isAtSameDayAs(choices.first.date) || date.isAtSameDayAs(choices.last.date)) return BorderRadius.circular(50);
+      if (date.isAtSameDayAs(choices.first.date) ||
+          date.isAtSameDayAs(choices.last.date))
+        return BorderRadius.circular(50);
       return BorderRadius.zero;
     }
     return null;
